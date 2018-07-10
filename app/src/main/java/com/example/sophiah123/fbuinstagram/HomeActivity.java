@@ -1,5 +1,6 @@
 package com.example.sophiah123.fbuinstagram;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -21,8 +22,11 @@ public class HomeActivity extends AppCompatActivity {
 
     private static final String imagePath = "/storage/emulated/0/DCIM/Camera/IMG_20180710_112710.jpg";
     private EditText descriptionInput;
+    //private Button pictureButton;
     private Button createButton;
     private Button refreshButton;
+    private Button pictureButton;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +36,16 @@ public class HomeActivity extends AppCompatActivity {
         descriptionInput = findViewById(R.id.description_et);
         createButton = findViewById(R.id.create_btn);
         refreshButton = findViewById(R.id.refresh_btn);
+        pictureButton = findViewById(R.id.picture_btn);
+
+        pictureButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //new intent
+                final Intent intent =new Intent(HomeActivity.this, UploadPhotoActivity.class);
+                startActivity(intent);
+            }
+        });
 
         createButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -45,8 +59,9 @@ public class HomeActivity extends AppCompatActivity {
                 parseFile.saveInBackground(new SaveCallback() {
                     @Override
                     public void done(ParseException e) {
-                        if(e==null)
+                        if (e == null)
                             createPost(description, parseFile, user);
+
                     }
                 });
 
@@ -64,7 +79,15 @@ public class HomeActivity extends AppCompatActivity {
 
     }
 
-    private void createPost(String description, ParseFile imageFile, ParseUser user) {
+    /*
+    // Log out any existing session
+    ParseUser currentUser = ParseUser.getCurrentUser();
+        if (currentUser != null) {
+        ParseUser.logOut();
+    }
+    */
+
+        private void createPost(String description, ParseFile imageFile, ParseUser user) {
         final Post newPost = new Post();
         newPost.setDescription(description);
         newPost.setImage(imageFile);
@@ -85,6 +108,8 @@ public class HomeActivity extends AppCompatActivity {
         });
 
     }
+
+
 
     private void loadTopPosts() {
         final Post.Query postsQuery = new Post.Query();

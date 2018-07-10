@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">FBUInstagram</string>
+    <string name="app_name">Instagram</string>
 
     <!-- Strings related to login -->
     <string name="prompt_username">Username</string>

@@ -36,6 +36,14 @@ public class Post extends ParseObject {
         put(KEY_USER, user);
     }
 
+    public ParseFile getPhotoFile() {
+        return getParseFile("photo");
+    }
+
+    public void setPhotoFile(ParseFile file) {
+        put("photo", file);
+    }
+
     public static class Query extends ParseQuery<Post>{
         public Query() {
             super(Post.class);
