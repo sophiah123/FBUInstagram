@@ -34,6 +34,13 @@ public class FeedActivity extends AppCompatActivity {
                     ParseUser user = post.getUser();
                     ParseFile image = post.getImage();
 
+                    /*imageView.setParseFile(post.getMedia());
+                    imageView.loadInBackground();
+
+                    Glide.with(view.context).load(post.getMedia().getUrl()).into(imageView);
+                    //IDK WHAT TO DO HERE
+*/
+
                     // Do whatever you want with the data...
                     Toast.makeText(FeedActivity.this, description, Toast.LENGTH_SHORT).show();
                 } else {

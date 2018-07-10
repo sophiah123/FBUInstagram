@@ -66,6 +66,8 @@ public class UploadPhotoActivity extends AppCompatActivity {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE) {
             if (resultCode == RESULT_OK) {
+
+
                 // by this point we have the camera photo on disk
                 Bitmap takenImage = BitmapFactory.decodeFile(photoFile.getAbsolutePath());
                 // RESIZE BITMAP, see section below
@@ -85,4 +87,30 @@ public class UploadPhotoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_upload_photo);
 
     }
+
+    /*
+    public void saveToParse(View view) {
+        if (bytes != null) {
+            // Save the scaled image to Parse
+            photoFile = new ParseFile(photoFileName, bytes.toByteArray());
+            photo.setPhotoFile(photoFile);
+
+            // TODO MUST BE LOGGED IN TO POST PHOTOS
+            photo.setUser(ParseUser.getCurrentUser());
+
+            // TODO Add captions
+            photo.saveInBackground(new SaveCallback() {
+
+                public void done(ParseException e) {
+                    if (e != null) {
+                        Log.d("UploadPhoto", e.toString());
+                    } else {
+                        // DONE!
+                    }
+                }
+            });
+
+        }
+    }
+    */
 }
