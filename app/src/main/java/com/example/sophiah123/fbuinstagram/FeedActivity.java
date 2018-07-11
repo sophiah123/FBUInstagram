@@ -3,6 +3,7 @@ package com.example.sophiah123.fbuinstagram;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.sophiah123.fbuinstagram.model.Post;
@@ -14,10 +15,14 @@ import com.parse.ParseUser;
 
 public class FeedActivity extends AppCompatActivity {
 
+    private ImageView imageShown;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_feed);
+
+        imageShown = findViewById(R.id.imageView);
     }
 
     // Specify which class to query
@@ -34,12 +39,12 @@ public class FeedActivity extends AppCompatActivity {
                     ParseUser user = post.getUser();
                     ParseFile image = post.getImage();
 
-                    /*imageView.setParseFile(post.getMedia());
-                    imageView.loadInBackground();
+//                    imageShown.setParseFile(post.getMedia());
+//                    imageShown.loadInBackground();
 
-                    Glide.with(view.context).load(post.getMedia().getUrl()).into(imageView);
+                    //Glide.with(view.context).load(post.getMedia().getUrl()).into(imageView);
                     //IDK WHAT TO DO HERE
-*/
+
 
                     // Do whatever you want with the data...
                     Toast.makeText(FeedActivity.this, description, Toast.LENGTH_SHORT).show();
@@ -50,3 +55,6 @@ public class FeedActivity extends AppCompatActivity {
         });
     }
 }
+
+//STARTING FROM HERE
+
