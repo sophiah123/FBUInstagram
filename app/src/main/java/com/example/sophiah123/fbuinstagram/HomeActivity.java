@@ -26,6 +26,7 @@ public class HomeActivity extends AppCompatActivity {
     private Button createButton;
     private Button refreshButton;
     private Button pictureButton;
+    private Button logoutButton;
 
 
     @Override
@@ -37,12 +38,13 @@ public class HomeActivity extends AppCompatActivity {
         createButton = findViewById(R.id.create_btn);
         refreshButton = findViewById(R.id.refresh_btn);
         pictureButton = findViewById(R.id.picture_btn);
+        logoutButton = findViewById(R.id.logout_btn);
 
         pictureButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //new intent
-                final Intent intent =new Intent(HomeActivity.this, UploadPhotoActivity.class);
+                final Intent intent = new Intent(HomeActivity.this, UploadPhotoActivity.class);
                 startActivity(intent);
             }
         });
@@ -77,7 +79,16 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
+        logoutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                logoutUser(v);
+            }
+
+        });
     }
+
+
 
     /*
     // Log out any existing session
@@ -109,6 +120,20 @@ public class HomeActivity extends AppCompatActivity {
 
     }
 
+    public void logoutUser(View view) {
+
+        ParseUser currentUser = ParseUser.getCurrentUser();
+        if (currentUser != null) {
+            ParseUser.logOut();
+            Intent i = new Intent(this, MainActivity.class);
+            startActivity(i);
+
+            //ParseUser.logOut();
+            //ParseUser currentUser = ParseUser.getCurrentUser(); // this will now be null
+            //Intent i = new Intent(getContext(), MainActivity.class);
+            //startActivity(i);
+        }
+    }
 
 
     private void loadTopPosts() {
@@ -131,6 +156,6 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
     }
-
 }
+
 
