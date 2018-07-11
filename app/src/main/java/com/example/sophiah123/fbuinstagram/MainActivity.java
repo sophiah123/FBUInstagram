@@ -11,13 +11,14 @@ import android.widget.EditText;
 import com.parse.LogInCallback;
 import com.parse.ParseException;
 import com.parse.ParseUser;
+import com.parse.SignUpCallback;
 
 public class MainActivity extends AppCompatActivity {
 
     private EditText usernameInput;
     private EditText passwordInput;
     private Button loginBtn;
-    private Button signupBtn;
+    private Button signUpBtn;
 
 
     @Override
@@ -28,16 +29,52 @@ public class MainActivity extends AppCompatActivity {
         usernameInput = findViewById(R.id.username_et);
         passwordInput = findViewById(R.id.password_et);
         loginBtn = findViewById(R.id.login_btn);
-        signupBtn = findViewById(R.id.login_btn);
+        signUpBtn = findViewById(R.id.signUp_btn);
 
+        final String username = usernameInput.getText().toString();
+        final String password = passwordInput.getText().toString();
 
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                final String username = usernameInput.getText().toString();
-                final String password = passwordInput.getText().toString();
+                //final String username = usernameInput.getText().toString();
+                //final String password = passwordInput.getText().toString();
 
                 login(username, password);
+            }
+        });
+
+        signUpBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+               //final String username = usernameInput.getText().toString();
+                //final String password = passwordInput.getText().toString();
+
+                signUp(username, password);
+            }
+        });
+
+    }
+
+    private void signUp(String username, String password) {
+        ParseUser user = new ParseUser();
+
+        final String userName = usernameInput.getText().toString();
+        final String passWord = passwordInput.getText().toString();
+
+        user.setUsername(userName);
+        user.setPassword(passWord);
+        user.signUpInBackground(new SignUpCallback() {
+            public void done(ParseException e) {
+                if (e == null) {
+                    login(userName, passWord);
+                    Log.d("SignUpActivity", "Sign up successful!");
+                    final Intent intent = new Intent(MainActivity.this, HomeActivity.class);
+                    startActivity(intent);
+                }else{
+                    Log.e("SignUpActivity", "Sign up failure.");
+                    e.printStackTrace();
+                }
             }
         });
     }
