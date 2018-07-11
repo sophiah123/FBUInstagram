@@ -1,38 +1,9 @@
 package com.example.sophiah123.fbuinstagram;
 
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.net.Uri;
-import android.os.Bundle;
-import android.os.Environment;
-import android.provider.MediaStore;
-import android.support.v4.content.FileProvider;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
-import android.view.View;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.Toast;
-
-import com.parse.ParseException;
-import com.parse.ParseFile;
-import com.parse.ParseObject;
-import com.parse.SaveCallback;
-
-import java.io.BufferedInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 public class UploadPhotoActivity extends AppCompatActivity {
-
+/*
     private Button saveButton;
     private static int RESULT_LOAD_CAMERA_IMAGE = 2;
     private static int RESULT_LOAD_GALLERY_IMAGE = 1;
@@ -185,6 +156,7 @@ public class UploadPhotoActivity extends AppCompatActivity {
         chooseDialog.show();
     }
 
+
     private byte[] readInFile(String path) throws IOException {
 
         byte[] data = null;
@@ -215,11 +187,11 @@ public class UploadPhotoActivity extends AppCompatActivity {
         }
 
         cameraImageFile = File.createTempFile(
-                imageFileName,  /* prefix */
-                ".jpg",         /* suffix */
-                folder      /* directory */
+                imageFileName,  // prefix
+                ".jpg",         // suffix
+                folder      // directory
         );
 
         return cameraImageFile;
-    }
+    }*/
 }
