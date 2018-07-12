@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -18,7 +19,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="53dp"
+        android:layout_marginTop="97dp"
         android:hint="@string/prompt_username"
         android:inputType="text"
         tools:layout_editor_absoluteX="0dp"
@@ -40,23 +41,32 @@
     <Button
         android:id="@+id/login_btn"
         style="@style/Widget.AppCompat.Button.Colored"
-        android:layout_width="137dp"
-        android:layout_height="71dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/password_et"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="43dp"
-        android:text="LOG IN"
+        android:text="Log In"
         tools:layout_editor_absoluteX="139dp"
-        tools:layout_editor_absoluteY="177dp" />
+        tools:layout_editor_absoluteY="177dp"
+        android:background="@drawable/my_button_bg"/>
 
     <Button
         android:id="@+id/signUp_btn"
         style="@style/Widget.AppCompat.Button.Colored"
-        android:layout_width="137dp"
-        android:layout_height="71dp"
-        android:layout_below="@+id/login_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="43dp"
-        android:text="SIGN UP" />
+        android:background="@drawable/my_button_bg"
+        android:text="Don't have an account? Sign up." />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        app:srcCompat="@mipmap/nux_dayone_landing_logo" />
 
 </RelativeLayout>
