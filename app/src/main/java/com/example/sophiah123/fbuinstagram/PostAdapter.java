@@ -32,13 +32,13 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
         context = parent.getContext();
         LayoutInflater inflater = LayoutInflater.from(context);
 
-        View tweetView = inflater.inflate(R.layout.item_post, parent, false);
-        ViewHolder viewHolder = new ViewHolder(tweetView);
+        View postView = inflater.inflate(R.layout.item_post, parent, false);
+        ViewHolder viewHolder = new ViewHolder(postView);
         return viewHolder;
     }
 
 
-    // bind value of Tweet object based on position of element
+    // bind value of Post object based on position of element
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         // get data according to position

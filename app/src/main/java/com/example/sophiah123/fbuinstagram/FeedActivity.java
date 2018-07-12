@@ -70,9 +70,9 @@ public class FeedActivity extends AppCompatActivity {
         @Override
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
-            setContentView(R.layout.activity_feed);
+            setContentView(R.layout.fragment_feed);
 
-            rvPosts = (RecyclerView) findViewById(R.id.rvPosts);
+            rvPosts = (RecyclerView) this.findViewById(R.id.rvPosts);
             posts = new ArrayList<>();
 
             postAdapter = new PostAdapter(posts);
@@ -81,7 +81,9 @@ public class FeedActivity extends AppCompatActivity {
             // set adapter
             rvPosts.setAdapter(postAdapter);
 
+
             loadTopPosts();
+
 
             // implement swipe to refresh
             // Lookup the swipe container view

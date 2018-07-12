@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -43,12 +44,31 @@ public class FeedFragment extends Fragment {
     // This event fires 2nd, before views are created for the fragment
     // The onCreate method is called when the Fragment instance is being created, or re-created.
     // Use onCreate for any standard setup that does not require the activity to be fully created
-    @Override
+
+    /*@Override
+
+
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         posts = new ArrayList<>();
         postAdapter = new PostAdapter(posts);
+
+        super.onCreate(savedInstanceState);
+        //setContentView(R.layout.fragment_feed);
+
+        rvPosts = (RecyclerView) findViewById(R.id.rvPosts);
+        posts = new ArrayList<>();
+
+        postAdapter = new PostAdapter(posts);
+        // set up RecyclerView (layout manager, use adapter)
+        rvPosts.setLayoutManager(new LinearLayoutManager(this));
+        // set adapter
+        rvPosts.setAdapter(postAdapter);
+
+        loadTopPosts();
     }
+*/
+
 
     // The onCreateView method is called when Fragment should create its View object hierarchy,
     // either dynamically or via XML layout inflation.
@@ -74,7 +94,34 @@ public class FeedFragment extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         // Setup any handles to view objects here
         // EditText etFoo = (EditText) view.findViewById(R.id.etFoo);
+
+        rvPosts = view.findViewById(R.id.rvPosts);
+        posts = new ArrayList<>();
+        postAdapter = new PostAdapter(posts);
+        rvPosts.setLayoutManager(new LinearLayoutManager(getActivity()));
+        rvPosts.setAdapter(postAdapter);
+
+        loadTopPosts();
+
+        //find the swipe container
+        swipeContainer = view.findViewById(R.id.swipeContainer);
+        // Setup refresh listener which triggers new data loading
+        swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                // Your code to refresh the list here.
+                // Make sure you call swipeContainer.setRefreshing(false)
+                refresh();
+            }
+        });
+        // Configure the refreshing colors
+        swipeContainer.setColorSchemeResources(
+                android.R.color.holo_blue_bright,
+                android.R.color.holo_green_light,
+                android.R.color.holo_orange_light,
+                android.R.color.holo_red_light);
     }
+
 
     // This method is called after the parent Activity's onCreate() method has completed.
     // Accessing the view hierarchy of the parent activity must be done in the onActivityCreated.
@@ -118,4 +165,69 @@ public class FeedFragment extends Fragment {
             }
         });
     }
+
+    public void refresh() {
+        postAdapter.clear();
+        loadTopPosts();
+        postAdapter.addAll(posts);
+        // Now we call setRefreshing(false) to signal refresh has finished
+        swipeContainer.setRefreshing(false);
+    }
+
+
+
+
+
+/*
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.fragment_feed);
+
+        rvPosts = (RecyclerView) findViewById(R.id.rvPosts);
+        posts = new ArrayList<>();
+
+        postAdapter = new PostAdapter(posts);
+        // set up RecyclerView (layout manager, use adapter)
+        rvPosts.setLayoutManager(new LinearLayoutManager(this));
+        // set adapter
+        rvPosts.setAdapter(postAdapter);
+
+        loadTopPosts();
+
+        // implement swipe to refresh
+        // Lookup the swipe container view
+        swipeContainer = (SwipeRefreshLayout) findViewById(R.id.swipeContainer);
+        // Setup refresh listener which triggers new data loading
+        swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                // Your code to refresh the list here.
+                // Make sure you call swipeContainer.setRefreshing(false)
+                // once the network request has completed successfully.
+                fetchTimelineAsync(0);
+                swipeContainer.setRefreshing(false);
+            }
+        });
+        // Configure the refreshing colors
+        swipeContainer.setColorSchemeResources(android.R.color.holo_blue_bright,
+                android.R.color.holo_green_light,
+                android.R.color.holo_orange_light,
+                android.R.color.holo_red_light);
+
+    }
+
+    public void fetchTimelineAsync(int page) {
+        // Send the network request to fetch the updated data
+        // `client` here is an instance of Android Async HTTP
+        // getHomeTimeline is an example endpoint.
+        // Remember to CLEAR OUT old items before appending in the new ones
+        postAdapter.clear();
+        loadTopPosts();
+        postAdapter.addAll(posts);
+        // Now we call setRefreshing(false) to signal refresh has finished
+        swipeContainer.setRefreshing(false);
+    }
+*/
 }
