@@ -99,25 +99,6 @@ public class PostDetailFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
     }
 
-    /*
-    // getRelativeTimeAgo("Mon Apr 01 21:16:23 +0000 2014");
-    private String getRelativeTimeAgo(String rawJsonDate) {
-        String postFormat = "EEE MMM dd HH:mm:ss ZZZZZ yyyy";
-        SimpleDateFormat sf = new SimpleDateFormat(postFormat, Locale.ENGLISH);
-        sf.setLenient(true);
-
-        String relativeDate = "";
-        try {
-            long dateMillis = sf.parse(rawJsonDate).getTime();
-            relativeDate = DateUtils.getRelativeTimeSpanString(dateMillis,
-                    System.currentTimeMillis(), DateUtils.SECOND_IN_MILLIS).toString();
-        } catch (java.text.ParseException e) {
-            e.printStackTrace();
-        }
-
-        return relativeDate;
-    }
-    */
 
     // getRelativeTimeAgo("Mon Apr 01 21:16:23 +0000 2014");
     public static String getRelativeTimeAgo(String rawJsonDate) {

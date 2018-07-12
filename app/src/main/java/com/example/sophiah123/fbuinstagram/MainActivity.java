@@ -81,29 +81,4 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    /*
-    private void signup(String username, String password) {
-        // Create the ParseUser
-        ParseUser user = new ParseUser();
-        // Set core properties
-        user.setUsername(username);
-        user.setPassword(password);
-        user.setEmail("email@example.com");
-        // Invoke signUpInBackground
-        user.signUpInBackground(new SignUpCallback() {
-            public void done(ParseException e) {
-                if (e == null) {
-                    Log.d("SignupActivity", "Signup successful");
-
-                    final Intent intent = new Intent(MainActivity.this, HomeActivity.class);
-                    startActivity(intent);
-                    finish();
-                } else {
-                    Log.e("SignupActivity", "Signup failure");
-                    e.printStackTrace();
-                }
-            }
-        });
-    }
-    */
 }
