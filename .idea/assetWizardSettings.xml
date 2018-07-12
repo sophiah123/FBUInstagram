@@ -34,8 +34,8 @@
                                   <option name="values">
                                     <map>
                                       <entry key="backgroundLayerName" value="ic_launcher_background" />
-                                      <entry key="foregroundImage" value="$USER_HOME$/Downloads/instagram_android_assets/instagram_android_assets/drawable-xxhdpi/instagram_user_filled_24.png" />
-                                      <entry key="foregroundLayerName" value="ic_user_filled" />
+                                      <entry key="foregroundImage" value="$USER_HOME$/Downloads/instagram_android_assets/instagram_android_assets/drawable-xxhdpi/direct.png" />
+                                      <entry key="foregroundLayerName" value="direct" />
                                       <entry key="outputName" value="icon" />
                                     </map>
                                   </option>

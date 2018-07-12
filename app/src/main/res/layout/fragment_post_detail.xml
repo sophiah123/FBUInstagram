@@ -3,7 +3,8 @@
     android:layout_height="match_parent"
     android:layout_width="match_parent"
     android:orientation="vertical"
-    android:fillViewport="false" >
+    android:fillViewport="false"
+    android:background="#ffffff">
 
     <android.support.constraint.ConstraintLayout
         xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -109,7 +110,7 @@
                 android:layout_toRightOf="@id/ibComment"
                 android:background="@android:color/transparent"
                 android:scaleType="fitXY"
-                android:src="@mipmap/message" />
+                android:src="@mipmap/direct" />
 
             <ImageButton
                 android:id="@+id/ibBookmark"
