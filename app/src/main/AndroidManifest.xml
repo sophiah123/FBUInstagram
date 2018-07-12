@@ -46,7 +46,12 @@
                 android:resource="@xml/fileprovider" />
         </provider>
 
-        <activity android:name=".FeedActivity"></activity>
+        <activity android:name=".FeedActivity" />
+        <activity
+            android:name=".CreateAccountActivity"
+            android:label="@string/title_activity_create_account"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".ProfileActivity"></activity>
     </application>
 
 </manifest>

@@ -11,7 +11,6 @@ import android.widget.EditText;
 import com.parse.LogInCallback;
 import com.parse.ParseException;
 import com.parse.ParseUser;
-import com.parse.SignUpCallback;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -129,12 +128,20 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        signUpBtn.setOnClickListener(new View.OnClickListener() {
+        /*signUpBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 final String username = usernameInput.getText().toString();
                 final String password = passwordInput.getText().toString();
                 signup(username, password);
+            }
+        }); */
+
+        signUpBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final Intent i = new Intent(MainActivity.this, CreateAccountActivity.class);
+                startActivity(i);
             }
         });
     }
@@ -157,6 +164,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    /*
     private void signup(String username, String password) {
         // Create the ParseUser
         ParseUser user = new ParseUser();
@@ -180,4 +188,5 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+    */
 }

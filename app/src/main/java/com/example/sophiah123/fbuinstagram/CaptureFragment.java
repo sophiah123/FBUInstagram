@@ -28,7 +28,7 @@ public class CaptureFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState) {
         // Defines the xml file for the fragment
         View v = inflater.inflate(R.layout.fragment_capture, parent, false);
-        ivPhoto = v.findViewById(R.id.ivPreview);
+        ivPhoto = v.findViewById(R.id.ivPhoto);
         btCreate = v.findViewById(R.id.btCreate);
         etCaption = v.findViewById(R.id.etCaption);
 

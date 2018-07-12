@@ -408,9 +408,12 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.parse.ParseUser;
+
 import java.io.File;
 
-public class HomeActivity extends AppCompatActivity {
+public class HomeActivity extends AppCompatActivity implements ProfileFragment.OnFragmentInteractionListener{
+
 
     FragmentTransaction fragmentTransaction;
 
@@ -478,7 +481,7 @@ public class HomeActivity extends AppCompatActivity {
         // wrap File object into a content provider
         // required for API >= 24
         // See https://guides.codepath.com/android/Sharing-Content-with-Intents#sharing-files-with-api-24-or-higher
-        Uri fileProvider = FileProvider.getUriForFile(HomeActivity.this, "me.juliasson.fileprovider", photoFile);
+        Uri fileProvider = FileProvider.getUriForFile(HomeActivity.this, "com.codepath.fileprovider", photoFile);
         intent.putExtra(MediaStore.EXTRA_OUTPUT, fileProvider);
 
         // If you call startActivityForResult() using an intent that no app can handle, your app will crash.
@@ -514,6 +517,9 @@ public class HomeActivity extends AppCompatActivity {
             if (resultCode == RESULT_OK) {
                 // by this point we have the camera photo on disk
 
+
+
+
                 String imagePath = photoFile.getAbsolutePath();
                 Bitmap rawTakenImage = BitmapFactory.decodeFile(imagePath);
                 Bitmap resizedBitmap = BitmapScaler.scaleToFitWidth(rawTakenImage, 400);
@@ -524,4 +530,12 @@ public class HomeActivity extends AppCompatActivity {
             }
         }
     }
+
+    @Override
+    public void logoutInteraction() {
+        ParseUser.logOut();
+        Intent intent = new Intent(HomeActivity.this, MainActivity.class);
+        startActivity(intent);
+    }
+
 }
