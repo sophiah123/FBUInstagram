@@ -16,11 +16,27 @@
                             <entry key="launcher">
                               <value>
                                 <PersistentState>
+                                  <option name="children">
+                                    <map>
+                                      <entry key="foregroundClipartAsset">
+                                        <value>
+                                          <PersistentState>
+                                            <option name="values">
+                                              <map>
+                                                <entry key="url" value="jar:file:/Applications/Android%20Studio.app/Contents/plugins/android/lib/android.jar!/images/material_design_icons/communication/ic_message_black_24dp.xml" />
+                                              </map>
+                                            </option>
+                                          </PersistentState>
+                                        </value>
+                                      </entry>
+                                    </map>
+                                  </option>
                                   <option name="values">
                                     <map>
                                       <entry key="backgroundLayerName" value="ic_launcher_background" />
-                                      <entry key="foregroundImage" value="$USER_HOME$/Downloads/instagram_android_assets/instagram_android_assets/drawable-xxhdpi/instagram_user_outline_24.png" />
-                                      <entry key="foregroundLayerName" value="ic_user_outline" />
+                                      <entry key="foregroundAssetType" value="CLIP_ART" />
+                                      <entry key="foregroundImage" value="$USER_HOME$/Downloads/instagram_android_assets/instagram_android_assets/drawable-xxhdpi/ufi_save.png" />
+                                      <entry key="foregroundLayerName" value="message" />
                                       <entry key="outputName" value="icon" />
                                     </map>
                                   </option>

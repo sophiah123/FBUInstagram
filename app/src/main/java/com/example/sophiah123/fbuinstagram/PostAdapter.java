@@ -1,7 +1,9 @@
 package com.example.sophiah123.fbuinstagram;
 
 import android.content.Context;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -114,6 +116,15 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
                 // show the activity
 //                context.startActivity(intent);
 //                }
+
+                Bundle args = new Bundle();
+                args.putParcelable("post", post);
+                PostDetailFragment fragment = new PostDetailFragment();
+                fragment.setArguments(args);
+                HomeActivity activity = (HomeActivity) context;
+                FragmentTransaction transaction = activity.getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.linearLayout, fragment);
+                transaction.commit();
             }
         }
     }
