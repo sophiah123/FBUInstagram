@@ -17,7 +17,9 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.example.sophiah123.fbuinstagram.model.Post;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Locale;
 
 public class PostDetailFragment extends Fragment {
@@ -67,7 +69,14 @@ public class PostDetailFragment extends Fragment {
 
         tvUserName.setText(post.getUser().getUsername());
         tvDescription.setText(String.format("%s %s", post.getUser().getUsername(), post.getDescription()));
+
+        String timeStamp = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss").format(new Date());
+        tvTimeStamp.setText(timeStamp);
+
+
         //tvTimeStamp.setText(getRelativeTimeAgo(post.getCreatedAt().toString()));
+
+
 
         Glide.with(this)
                 .load(post.getImage().getUrl())
@@ -90,6 +99,7 @@ public class PostDetailFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
     }
 
+    /*
     // getRelativeTimeAgo("Mon Apr 01 21:16:23 +0000 2014");
     private String getRelativeTimeAgo(String rawJsonDate) {
         String postFormat = "EEE MMM dd HH:mm:ss ZZZZZ yyyy";
@@ -106,5 +116,26 @@ public class PostDetailFragment extends Fragment {
         }
 
         return relativeDate;
+    }
+    */
+
+    // getRelativeTimeAgo("Mon Apr 01 21:16:23 +0000 2014");
+    public static String getRelativeTimeAgo(String rawJsonDate) {
+        String twitterFormat = "EEE MMM dd HH:mm:ss ZZZZZ yyyy";
+        SimpleDateFormat sf = new SimpleDateFormat(twitterFormat,
+                Locale.ENGLISH);
+        sf.setLenient(true);
+
+        String relativeTime = "";
+        try {
+            long epochTime = sf.parse(rawJsonDate).getTime();
+            relativeTime = DateUtils.getRelativeTimeSpanString(epochTime,
+                    System.currentTimeMillis(), DateUtils.SECOND_IN_MILLIS)
+                    .toString();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        return relativeTime;
     }
 }

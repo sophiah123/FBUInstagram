@@ -100,6 +100,7 @@ public class FeedFragment extends Fragment {
         postAdapter = new PostAdapter(posts);
         rvPosts.setLayoutManager(new LinearLayoutManager(getActivity()));
         rvPosts.setAdapter(postAdapter);
+        rvPosts.scrollToPosition(0);
 
         loadTopPosts();
 
