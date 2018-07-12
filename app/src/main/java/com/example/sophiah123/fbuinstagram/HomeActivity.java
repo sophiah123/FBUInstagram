@@ -412,6 +412,7 @@ import com.parse.ParseUser;
 
 import java.io.File;
 
+
 public class HomeActivity extends AppCompatActivity implements ProfileFragment.OnFragmentInteractionListener{
 
 
@@ -463,11 +464,11 @@ public class HomeActivity extends AppCompatActivity implements ProfileFragment.O
 
     }
 
-   /* public void onClickToSettings(View view) {
-        Intent i = new Intent(HomeActivity.this, SettingsFragment.class);
-        startActivity(i);
-    }
-    */
+  /* public void onClickToSettings(View view) {
+       Intent i = new Intent(HomeActivity.this, SettingsFragment.class);
+       startActivity(i);
+   }
+   */
 
     //----------CAMERA-----------
 
@@ -539,3 +540,4 @@ public class HomeActivity extends AppCompatActivity implements ProfileFragment.O
     }
 
 }
+
