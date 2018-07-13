@@ -1,0 +1,71 @@
+<!-- Menu file for `activity_movies.xml` is located in a file
+     such as `res/menu/menu_movies.xml`  -->
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/add"
+        android:icon="@mipmap/camera_shadow_fill"
+        app:showAsAction="always"
+        android:title="Camera Logo"
+        >
+    </item>
+    <item
+        android:id="@+id/reset"
+        android:icon="@mipmap/nav_logo_whiteout"
+        app:showAsAction="always"
+        android:title="Instagram Logo">
+    </item>
+
+    <item
+        android:id="@+id/about"
+        android:icon="@mipmap/nav_inbox_paper_plane"
+        app:showAsAction="always"
+        android:title="Paper airplane">
+    </item>
+</menu>
+
+
+
+
+<!--
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools" tools:context=".MainActivity">
+
+    <item
+        android:id="@+id/add"
+        app:showAsAction="always"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/camera_shadow_fill"
+        android:layout_gravity="center_vertical"
+        android:background="@android:color/transparent"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:title="Camera logo"
+        />
+    <item
+        android:id="@+id/reset"
+        app:showAsAction="always|withText"
+        android:title="Instagram logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:src="@mipmap/nav_logo_whiteout"
+        android:padding="10dp"
+        android:layout_alignParentTop="true"/>
+    <item
+        android:id="@+id/about"
+        app:showAsAction="always"
+        android:title="Paper airplane"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/nav_inbox_paper_plane"
+        android:layout_gravity="center_vertical"
+        android:background="@android:color/transparent"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" >
+    </item>
+
+</menu>
+-->

@@ -34,8 +34,8 @@
                                   <option name="values">
                                     <map>
                                       <entry key="backgroundLayerName" value="ic_launcher_background" />
-                                      <entry key="foregroundImage" value="$USER_HOME$/Downloads/instagram_android_assets/instagram_android_assets/drawable-xxhdpi/nux_dayone_landing_logo.png" />
-                                      <entry key="foregroundLayerName" value="nux_dayone_landing_logo" />
+                                      <entry key="foregroundImage" value="$USER_HOME$/Downloads/instagram_android_assets/instagram_android_assets/drawable-xxhdpi/nav_inbox_paper_plane.png" />
+                                      <entry key="foregroundLayerName" value="nav_inbox_paper_plane" />
                                       <entry key="outputName" value="icon" />
                                     </map>
                                   </option>

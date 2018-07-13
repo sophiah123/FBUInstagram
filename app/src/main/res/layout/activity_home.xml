@@ -6,6 +6,41 @@
     android:layout_height="match_parent"
     tools:context=".HomeActivity">
 
+
+    <android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:background="#D3D3D3"
+        android:minHeight="?attr/actionBarSize">
+
+        <ImageView
+            android:id="@+id/cameralogo"
+            android:layout_width="80dp"
+            android:layout_height="72dp"
+            android:layout_gravity="left"
+            android:src="@mipmap/camera_shadow_fill" />
+
+        <ImageView
+            android:id="@+id/instalogo"
+            android:layout_width="wrap_content"
+            android:layout_height="80dp"
+            android:layout_gravity="center"
+            android:padding="8dp"
+            android:src="@mipmap/nav_logo_whiteout" />
+
+        <ImageView
+            android:id="@+id/paperplane"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_gravity="right"
+            android:padding="8dp"
+            android:src="@mipmap/nav_inbox_paper_plane" />
+
+    </android.support.v7.widget.Toolbar>
+
     <!--<Button
         android:id="@+id/btCreate"
         android:layout_width="match_parent"
@@ -68,11 +103,11 @@
     <FrameLayout
         android:id="@+id/flContainer"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="429dp"
         android:layout_above="@+id/bottom_navigation"
         android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true">
-    </FrameLayout>
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="82dp"></FrameLayout>
 
 </RelativeLayout>
 
