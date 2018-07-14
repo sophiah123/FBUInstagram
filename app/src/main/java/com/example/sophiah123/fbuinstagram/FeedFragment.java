@@ -2,8 +2,13 @@ package com.example.sophiah123.fbuinstagram;
 
 
 import android.app.Activity;
+import android.arch.lifecycle.LiveData;
+import android.arch.lifecycle.Observer;
+import android.arch.paging.LivePagedListBuilder;
+import android.arch.paging.PagedList;
 import android.content.Context;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -26,6 +31,9 @@ public class FeedFragment extends Fragment {
     FragmentActivity listener;
     RecyclerView rvPosts;
     static ArrayList<Post> posts;
+
+    LiveData<PagedList<Post>> posts2;
+
     private PostAdapter postAdapter;
     private SwipeRefreshLayout swipeContainer;
 
@@ -142,5 +150,31 @@ public class FeedFragment extends Fragment {
         postAdapter.addAll(posts);
         // Now we call setRefreshing(false) to signal refresh has finished
         swipeContainer.setRefreshing(false);
+    }
+
+    // normally this data should be encapsulated in ViewModels, but shown here for simplicity
+
+    public void onCreate(Bundle savedInstanceState) {
+
+        super.onCreate(savedInstanceState);
+        PagedList.Config pagedListConfig =
+                new PagedList.Config.Builder().setEnablePlaceholders(true)
+                        .setPrefetchDistance(10)
+                        .setInitialLoadSizeHint(10)
+                        .setPageSize(10).build();
+
+        // initial page size to fetch can also be configured here too
+        PagedList.Config config = new PagedList.Config.Builder().setPageSize(20).build();
+
+        ParseDataSourceFactory sourceFactory = new ParseDataSourceFactory();
+
+        posts2 = new LivePagedListBuilder(sourceFactory, pagedListConfig).build();
+
+        posts2.observe(this, new Observer<PagedList<Post>>() {
+            @Override
+            public void onChanged(@Nullable PagedList<Post> posts) {
+                postAdapter.submitList(posts);
+            }
+        });
     }
 }

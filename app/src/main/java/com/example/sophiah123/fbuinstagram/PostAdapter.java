@@ -1,9 +1,11 @@
 package com.example.sophiah123.fbuinstagram;
 
+import android.arch.paging.PagedListAdapter;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.util.DiffUtil;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,14 +18,35 @@ import com.example.sophiah123.fbuinstagram.model.Post;
 
 import java.util.List;
 
-public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
+public class PostAdapter extends PagedListAdapter<Post, PostAdapter.ViewHolder> {
 
     private List<Post> mPosts;
     Context context;
 
+    /*
     // pass in Tweets array in constructor
     public PostAdapter(List<Post> posts) {
         mPosts = posts;
+    }
+    */
+
+    //public PostAdapter(List<Post> posts) {
+    //}
+
+
+    public PostAdapter(List<Post> mPosts) {
+        super(new DiffUtil.ItemCallback<Post>() {
+            @Override
+            public boolean areItemsTheSame(@NonNull Post post, @NonNull Post t1) {
+                return post.getObjectId().equals(t1.getObjectId());
+            }
+
+            @Override
+            public boolean areContentsTheSame(@NonNull Post post, @NonNull Post t1) {
+                return false;
+            }
+        });
+        this.mPosts = mPosts;
     }
 
     // for each row, inflate the layout and cache references into ViewHolder
@@ -38,6 +61,32 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
         ViewHolder viewHolder = new ViewHolder(postView);
         return viewHolder;
     }
+
+
+/*
+    public void onBindViewHolder(PostAdapter.ViewHolder holder, int position) {
+
+        // getItem() should be used with ListAdapter
+        Post post = getItem(position);
+
+        // null placeholders if the PagedList is configured to use them
+        // only works for data sets that have total count provided (i.e. PositionalDataSource)
+        if (post == null)
+        {
+            return;
+        }
+
+        // Handle remaining work here
+        // ...
+        holder.tvUsername.setText(post.getUser().getUsername());
+        holder.tvDescription.setText(post.getDescription());
+
+        Glide.with(context)
+                .load(post.getImage().getUrl())
+                .into(holder.ivPicture);
+
+    }
+*/
 
 
     // bind value of Post object based on position of element
@@ -68,6 +117,8 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
                 .load(post.getImage().getUrl())
                 .into(holder.ivPicture);
     }
+
+
 
     @Override
     public int getItemCount() {
